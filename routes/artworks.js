@@ -22,7 +22,7 @@ router.route('/:artworkId')
     .put(isLoggedIn, isArtworkAuthor, upload3.array('photo'), validateArtwork, catchAsync(artworks.updateArtwork))
     .delete(isLoggedIn, isArtworkAuthor, catchAsync(artworks.deleteArtwork));
 
-router.get('/:ArtworkId/edit', isLoggedIn, isArtworkAuthor, catchAsync(artworks.renderEditForm))
+router.get('/:artworkId/edit', isLoggedIn, isArtworkAuthor, catchAsync(artworks.renderEditForm))
 
 
 
