@@ -21,7 +21,7 @@ const userRoutes = require('./routes/users');
 const collectionRoutes = require('./routes/collections');
 const artworkRoutes = require('./routes/artworks');
 const studentRoutes = require('./routes/students');
-// const cartRoutes = require('./routes/cart');
+const cartRoutes = require('./routes/cart');
 
 const MongoStore = require("connect-mongo");
 
@@ -145,7 +145,7 @@ app.use('/collections', collectionRoutes)
 app.use('/collections/:id/artworks', artworkRoutes)
 app.use('/artworks', artworkRoutes)
 app.use('/students', studentRoutes)
-// app.use('/cart', cartRoutes)
+app.use('/cart', cartRoutes)
 
 
 app.all('*', (req, res, next) => {
