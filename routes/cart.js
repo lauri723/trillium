@@ -9,20 +9,28 @@ const upload = multer({ storage });
 
 const Artwork = require('../models/artwork');
 
-router.get('/checkout', function (req, res, next) {
+router.get('/view', function (req, res, next) {
     const artworks = req.session.cart;
-    res.render('checkout', {
+    res.render('cart', {
         artworks: artworks,
         cart: req.session.cart
         // title: "Shopping Cart"
     });
 });
 
+router.get('/checkout', function (req, res, next) {
+    const items = req.session.cart
+    res.render('checkout', {
+        items,
+        stripePublicKey: process.env.STRIPE_PUBLIC_KEY
+    });
+});
 
-router.get('/add/:artwork', function (req, res) {
+
+router.get('/add/:artwork', catchAsync(async function (req, res) {
     const slug = req.params.artwork
-    Artwork.findOne({ slug: slug }, function (err, artwork) {
-        if (err) return console.log(err);
+    try {
+        let artwork = await Artwork.findOne({ slug: slug });
         if (req.session.cart === undefined) {
             req.session.cart = [];
             req.session.cart.push({
@@ -36,7 +44,7 @@ router.get('/add/:artwork', function (req, res) {
             let item = req.session.cart.find(item => {
                 return item.id == artwork._id;
             });
-
+    
             if (item) {
                 item.qty++;
             } else {
@@ -49,12 +57,11 @@ router.get('/add/:artwork', function (req, res) {
                 });
             }
         }
-        res.redirect('/cart/checkout')
-        // res.redirect('/cart/checkout', {
-        //     title: "Shopping Cart"
-        // });
-    });
-});
+        res.redirect('/cart/view')
+    } catch(err) {
+        console.log(err);
+    }
+}));
 
 router.get('/update/:artwork', function (req, res, next) {
     let action = req.query.action;
@@ -79,11 +86,11 @@ router.get('/update/:artwork', function (req, res, next) {
             break;
         
         default:
-            res.redirect('/cart/checkout');
+            res.redirect('/cart/view');
             break;
     }
-    res.redirect('/cart/checkout')
-    // res.redirect('/cart/checkout', {
+    res.redirect('/cart/view')
+    // res.redirect('/cart/view', {
     //     title: "Shopping Cart"
     // });
 });

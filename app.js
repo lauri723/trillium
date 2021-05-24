@@ -48,6 +48,7 @@ app.set('views', path.join(__dirname, 'views'))
 
 app.use('/tinymce', express.static(path.join(__dirname, 'node_modules', 'tinymce')));
 
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')))
@@ -90,6 +91,8 @@ const scriptSrcUrls = [
     "https://kit.fontawesome.com",
     "https://cdnjs.cloudflare.com",
     "https://cdn.jsdelivr.net",
+    "https://js.stripe.com/v3/",
+    "https://polyfill.io/v3/polyfill.min.js"
 ];
 const styleSrcUrls = [
     "https://kit-free.fontawesome.com",
@@ -118,6 +121,8 @@ app.use(
                 "https://res.cloudinary.com/trillium-art-studio/" //SHOULD MATCH YOUR CLOUDINARY ACCOUNT! 
             ],
             fontSrc: ["'self'", ...fontSrcUrls],
+            connectSrc: ["'self'"],
+            frameSrc: ["https://js.stripe.com/"]
         },
     })
 );

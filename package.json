@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC",
@@ -30,6 +31,7 @@
     "passport-local-mongoose": "^6.1.0",
     "sanitize-html": "^2.3.3",
     "slugify": "^1.5.3",
+    "stripe": "^8.149.0",
     "tinymce": "^5.8.0"
   }
 }
