@@ -1,7 +1,6 @@
 {
   "name": "trillium",
   "version": "1.0.0",
-  "description": "",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -33,5 +32,15 @@
     "slugify": "^1.5.3",
     "stripe": "^8.149.0",
     "tinymce": "^5.8.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lauri723/trillium.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/lauri723/trillium/issues"
+  },
+  "homepage": "https://github.com/lauri723/trillium#readme",
+  "description": ""
 }

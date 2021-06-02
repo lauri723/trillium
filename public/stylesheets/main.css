@@ -2,16 +2,22 @@
   font-size: 62.5%;
 } */
 
+
 body {
   min-height: 100vh;
   font-family: 'Krub', sans-serif;
   color: var(--color-four);
+  overflow-x: hidden;
 }
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+.container-fluid {
+  margin: 0;
 }
 
 .bg-custom {
@@ -61,8 +67,18 @@ body {
   font-weight: 500;
 }
 
-.logo-box {
-  width: 100%;
+button.navbar-toggler, .toggler-icon {
+  color: var(--color-one);
+  border: 1px solid var(--color-one);
+}
+
+.toggler-icon-collection {
+  height: 0px;
+  /* width: 0px; */
+}
+
+.container.logo-box {
+  width: auto;
   min-height: 14rem;
   /* background-color: #000; */
   /* background-color: #212529; */
@@ -334,7 +350,7 @@ img.img-leaf.wrapped {
 h5.leaf-edit-delete {
   border: 1px solid var(--color-one);
   padding: 2rem;
-  width: 18rem;
+  /* width: 18rem; */
 }
 
 .card-link + .card-link {
@@ -503,7 +519,7 @@ footer.footer a {
   font-size: 1rem;
 }
 
-footer div.container.tril-lovely p {
+footer div.container.tril-lovely p, div.container.tril-lovely p a {
   color: var(--color-one);
   font-size: 0.9rem;
 }

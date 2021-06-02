@@ -12,8 +12,8 @@ module.exports.index = async (req, res) => {
         .skip(perPage * page - perPage)
         .limit(perPage)
         .populate("collection");
-    if (req.query.title != null && req.query.title != '') {
-        query = query.regex('title', new RegExp(req.query.title, 'i'))
+    if (req.query.tags != null && req.query.tags != '') {
+        query = query.regex('tags', new RegExp(req.query.tags, 'i'))
     }
 
     const count = await Artwork.countDocuments();
